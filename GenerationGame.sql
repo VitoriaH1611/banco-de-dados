@@ -2,7 +2,7 @@
 CREATE DATABASE db_generation_game_online;
 USE db_generation_game_online;
 
--- Criação da tabela tb_classes
+
 CREATE TABLE tb_classes (
     id INT AUTO_INCREMENT,
     nome VARCHAR(255),
@@ -10,13 +10,11 @@ CREATE TABLE tb_classes (
     PRIMARY KEY (id)
 );
 
--- Inserção de registros na tabela tb_classes
 INSERT INTO tb_classes (nome, tipo) VALUES
     ('Guerreiro', 'Melee'),
     ('Fada', 'Magia'),
     ('Bruxa', 'Magia Negra');
 
--- Criação da tabela tb_personagens
 CREATE TABLE tb_personagens (
     id INT AUTO_INCREMENT,
     nome VARCHAR(255),
@@ -28,7 +26,6 @@ CREATE TABLE tb_personagens (
     FOREIGN KEY (id_classe) REFERENCES tb_classes(id)
 );
 
--- Inserção de registros na tabela tb_personagens
 INSERT INTO tb_personagens (nome, nivel, poder_ataque, poder_defesa, id_classe) VALUES
     ('Bloom', 12, 2300, 1200, (SELECT id FROM tb_classes WHERE nome = 'Fada')),
     ('Stella', 11, 2100, 1100, (SELECT id FROM tb_classes WHERE nome = 'Fada')),
